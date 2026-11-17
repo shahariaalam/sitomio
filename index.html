@@ -1,0 +1,580 @@
+
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shaharia Alam | Portfolio</title>
+
+<style>
+:root {
+  --bg: #080b18;
+  --cyan: #54e7ff;
+  --violet: #9b7bff;
+  --text: #f4f7ff;
+  --muted: #aab5d1;
+  --line: rgba(150,178,255,.18);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  color: var(--text);
+  font-family: Arial, sans-serif;
+  background:
+    radial-gradient(ellipse at 15% 10%, rgba(83,74,210,.25), transparent 38%),
+    radial-gradient(ellipse at 85% 35%, rgba(0,207,231,.16), transparent 35%),
+    var(--bg);
+  line-height: 1.6;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.wrap {
+  width: min(1100px, calc(100% - 40px));
+  margin: auto;
+}
+
+/* MENU */
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(8,11,24,.85);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--line);
+}
+
+.nav {
+  min-height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.brand span {
+  color: var(--cyan);
+}
+
+nav {
+  display: flex;
+  gap: 26px;
+  color: var(--muted);
+}
+
+nav a:hover {
+  color: var(--cyan);
+}
+
+/* INTRODUZIONE */
+
+.hero {
+  min-height: 590px;
+  display: grid;
+  grid-template-columns: 1.15fr .85fr;
+  align-items: center;
+  gap: 28px;
+  padding: 80px 0;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 13px;
+  border: 1px solid rgba(84,231,255,.28);
+  border-radius: 999px;
+  color: var(--cyan);
+  background: rgba(84,231,255,.07);
+  font-size: 13px;
+  letter-spacing: 2px;
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--cyan);
+  box-shadow: 0 0 14px var(--cyan);
+}
+
+h1 {
+  font-size: clamp(3rem, 8vw, 6.5rem);
+  line-height: .98;
+  letter-spacing: -4px;
+}
+
+h1 span {
+  background: linear-gradient(100deg, var(--cyan), #a5a0ff, #d7a5ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.intro {
+  color: var(--muted);
+  font-size: 20px;
+  max-width: 600px;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 13px;
+  margin-top: 30px;
+}
+
+.btn {
+  padding: 12px 19px;
+  border-radius: 12px;
+  font-weight: bold;
+  transition: .2s;
+}
+
+.btn:hover {
+  transform: translateY(-4px);
+}
+
+.primary {
+  color: #06101a;
+  background: linear-gradient(100deg, var(--cyan), #a6a0ff);
+}
+
+.secondary {
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.04);
+}
+
+/* OGGETTO 3D */
+
+.scene {
+  min-height: 390px;
+  display: grid;
+  place-items: center;
+  perspective: 900px;
+}
+
+.orbital {
+  position: relative;
+  width: min(330px, 75vw);
+  aspect-ratio: 1;
+  transform-style: preserve-3d;
+  animation: float 7s ease-in-out infinite;
+}
+
+.core {
+  position: absolute;
+  inset: 25%;
+  border-radius: 28%;
+  background: radial-gradient(
+    circle at 30% 25%,
+    #e7ffff 0 3%,
+    #70f1ff 8%,
+    #5c6dff 42%,
+    #25145f 78%
+  );
+  box-shadow:
+    inset -18px -20px 35px rgba(5,8,35,.65),
+    inset 10px 10px 25px rgba(255,255,255,.55),
+    0 0 55px rgba(84,231,255,.55),
+    0 0 110px rgba(155,123,255,.25);
+  transform: translateZ(55px) rotateX(18deg) rotateY(-24deg);
+}
+
+.ring {
+  position: absolute;
+  inset: 12%;
+  border: 2px solid rgba(84,231,255,.75);
+  border-radius: 50%;
+  transform: rotateX(68deg) rotateZ(-25deg);
+  box-shadow: 0 0 22px rgba(84,231,255,.35);
+}
+
+.ring.r2 {
+  inset: 4%;
+  border-color: rgba(173,139,255,.7);
+  transform: rotateY(66deg) rotateX(18deg);
+}
+
+.ring.r3 {
+  inset: 20%;
+  border-color: rgba(255,255,255,.45);
+  transform: rotateX(78deg) rotateZ(58deg);
+}
+
+.ring.r1 {
+  animation: orbit 18s linear infinite;
+}
+
+.spark {
+  position: absolute;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #c7fbff;
+  box-shadow: 0 0 22px 6px rgba(84,231,255,.7);
+}
+
+.s1 {
+  top: 12%;
+  left: 20%;
+}
+
+.s2 {
+  right: 12%;
+  bottom: 22%;
+}
+
+@keyframes float {
+  0%,100% {
+    transform: translateY(0) rotateX(-5deg) rotateY(7deg);
+  }
+  50% {
+    transform: translateY(-18px) rotateX(5deg) rotateY(-8deg);
+  }
+}
+
+@keyframes orbit {
+  to {
+    transform: rotateZ(335deg) rotateX(68deg);
+  }
+}
+
+/* SEZIONI */
+
+section {
+  padding: 48px 0 62px;
+  scroll-margin-top: 85px;
+}
+
+.section-top {
+  margin-bottom: 25px;
+}
+
+.kicker {
+  color: var(--cyan);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 38px;
+  margin: 6px 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 17px;
+}
+
+/* SCHEDE 3D */
+
+.card {
+  padding: 24px;
+  min-height: 170px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: rgba(18,25,49,.72);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 18px 50px rgba(0,0,0,.15);
+  transform-style: preserve-3d;
+  transition: .25s;
+}
+
+.card:hover {
+  transform: translateY(-7px) perspective(700px)
+    rotateX(2deg) rotateY(-2deg);
+  border-color: var(--cyan);
+  box-shadow: 0 22px 55px rgba(0,0,0,.28);
+}
+
+.icon {
+  font-size: 28px;
+  margin-bottom: 12px;
+  transform: translateZ(18px);
+}
+
+.card h3 {
+  margin: 0 0 7px;
+}
+
+.card p {
+  margin: 0;
+  color: var(--muted);
+}
+
+/* GALLERIA */
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 17px;
+}
+
+.photo {
+  overflow: hidden;
+  min-height: 220px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: linear-gradient(
+    145deg,
+    rgba(84,231,255,.12),
+    rgba(155,123,255,.13)
+  );
+}
+
+.photo img {
+  display: block;
+  width: 100%;
+  height: 220px;
+  object-fit: contain;
+  padding: 10px;
+  background: rgba(255,255,255,.035);
+  transition: transform .35s;
+}
+
+.photo:hover img {
+  transform: scale(1.05);
+}
+
+.photo figcaption {
+  padding: 12px 15px;
+  color: var(--muted);
+}
+
+/* FOOTER */
+
+footer {
+  margin-top: 35px;
+  padding: 26px 0;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  text-align: center;
+}
+
+/* VERSIONE SMARTPHONE */
+
+@media (max-width: 720px) {
+  .hero {
+    grid-template-columns: 1fr;
+    padding-top: 60px;
+  }
+
+  .scene {
+    min-height: 280px;
+  }
+
+  .orbital {
+    width: 245px;
+  }
+
+  .grid,
+  .gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .nav {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 17px 0;
+  }
+
+  nav {
+    gap: 13px;
+  }
+
+  .photo img {
+    height: 240px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition: none !important;
+    animation: none !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#home">
+      SHAHARIA<span>.</span>
+    </a>
+
+    <nav>
+      <a href="#competenze">Competenze</a>
+      <a href="#hobby">Hobby</a>
+      <a href="#galleria">Galleria</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- INTRODUZIONE -->
+
+<section class="hero wrap" id="home">
+
+  <div>
+    <div class="eyebrow">
+      <span class="dot"></span>
+      Portfolio personale
+    </div>
+
+    <h1>
+      Ciao, sono<br>
+      <span>Shaharia Alam.</span>
+    </h1>
+
+    <p class="intro">
+      Studio informatica e mi piace scoprire il mondo
+      della tecnologia, creare pagine web e imparare cose nuove.
+    </p>
+
+    <div class="actions">
+      <a class="btn primary" href="#competenze">
+        Scopri le mie competenze
+      </a>
+
+      <a class="btn secondary" href="#galleria">
+        Vai alla galleria
+      </a>
+    </div>
+  </div>
+
+  <div class="scene">
+    <div class="orbital">
+      <div class="ring r1"></div>
+      <div class="ring r2"></div>
+      <div class="ring r3"></div>
+      <div class="core"></div>
+      <span class="spark s1"></span>
+      <span class="spark s2"></span>
+    </div>
+  </div>
+
+</section>
+
+<!-- COMPETENZE -->
+
+<section class="wrap" id="competenze">
+
+  <div class="section-top">
+    <div class="kicker">01 / Cosa so fare</div>
+    <h2>Le mie competenze</h2>
+  </div>
+
+  <div class="grid">
+
+    <article class="card">
+      <div class="icon">💻</div>
+      <h3>Sviluppo web</h3>
+      <p>So scrivere una pagina web usando HTML e CSS.</p>
+    </article>
+
+    <article class="card">
+      <div class="icon">⌨️</div>
+      <h3>GitHub</h3>
+      <p>So usare GitHub per gestire e condividere progetti.</p>
+    </article>
+
+    <article class="card">
+      <div class="icon">🌍</div>
+      <h3>Lingue</h3>
+      <p>Parlo italiano e inglese.</p>
+    </article>
+
+  </div>
+</section>
+
+<!-- HOBBY -->
+
+<section class="wrap" id="hobby">
+
+  <div class="section-top">
+    <div class="kicker">02 / Tempo libero</div>
+    <h2>I miei hobby</h2>
+  </div>
+
+  <div class="grid">
+
+    <article class="card">
+      <div class="icon">🎮</div>
+      <h3>Videogiochi</h3>
+      <p>Mi piace giocare ai videogiochi e scoprire nuovi mondi virtuali.</p>
+    </article>
+
+    <article class="card">
+      <div class="icon">🎧</div>
+      <h3>Musica</h3>
+      <p>Ascoltare musica è uno dei miei passatempi preferiti.</p>
+    </article>
+
+  </div>
+</section>
+
+<!-- GALLERIA -->
+
+<section class="wrap" id="galleria">
+
+  <div class="section-top">
+    <div class="kicker">03 / I miei interessi</div>
+    <h2>La mia galleria</h2>
+  </div>
+
+  <div class="gallery">
+
+    <figure class="photo">
+      <img src="foto1.jpg" alt="PlayStation 5">
+      <figcaption>Gaming · PlayStation 5</figcaption>
+    </figure>
+
+    <figure class="photo">
+      <img src="foto2.jpg" alt="Gatto">
+      <figcaption>Un gatto</figcaption>
+    </figure>
+
+    <figure class="photo">
+      <img src="foto3.jpg" alt="Cuffie">
+      <figcaption>Musica · Cuffie</figcaption>
+    </figure>
+
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    © 2026 Shaharia Alam · Portfolio personale
+  </div>
+</footer>
+
+</body>
+</html>
